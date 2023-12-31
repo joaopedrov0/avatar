@@ -1,0 +1,35 @@
+body{
+    background-image: url('../img/aang-5836896_1280.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: clamp(200px, 90vw, 680px);
+}
+
+.wrap{
+    margin-top: 30vh;
+}
+
+.menu{
+    border: 1px solid rgba(200, 200, 200, 0.3);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: row;
+    margin-top: 40px;
+}
+
+.menu > * {
+    width: clamp(100px, 500px, 40vw);
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(230, 230, 230, 0.5);
+}
+
+.btn{
+    padding: 20px 50px;
+    background-color: #0494df;
+    color: black;
+    font-size: 24px;
+    border-radius: 4px;
+}

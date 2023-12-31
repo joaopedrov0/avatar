@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Stylish&display=swap');
+@font-face {
+    font-family: 'avatar-airbender';
+    src: url('../fonts/Avatar\ Airbender.ttf');
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Stylish', serif;
+}
+
+a{
+    text-decoration: none;
+}
+
+a:visited, a:active{
+    color: inherit;
+}
+
+body{
+    justify-content: center;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+
+h1{
+    font-family: 'avatar-airbender';
+    font-size: 32px;
+}
+
+.wrap{
+    width: clamp(90vw, 90vw, 1200px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.avatar-airbender{
+    font-family: 'avatar-airbender';
+}
