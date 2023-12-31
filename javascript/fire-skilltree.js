@@ -131,5 +131,64 @@ class FireSkillTree {
             range: [0, 150, 150],
         },
     }
-    
+
+    //chat gpt part, revisar com atenção
+    continuousFlame = {
+        name: 'Chama Contínua',
+        range: [6, 7, 8], // 6 quadrados = 9 metros
+        damage: ['4d4', '6d4', '6d6', '8d8', '8d10'],
+        learningComponents: 'Nenhum',
+        duration: 'Instantânea',
+        uses: 3,
+        toHit: '1d20',
+        castingTime: '1 ação',
+        description:
+          'O dobrador de fogo lança com uma das mãos uma labareda de fogo constante, de até 9 metros, causando 4d4 de dano e aplicando Feridas Dolorosas durante um turno após o recebimento do dano. Inimigos sob este efeito recebem + ⅓ do dano total que lhe foi causado por esta habilidade. Este efeito não se acumula.',
+        xp: 700,
+        purchased: false,
+        upgrades: {
+          damage: [0, 100, 150, 350, 200],
+          range: [0, 150, 150],
+        },
+    };
+      
+    fireWall = {
+        name: 'Parede de Fogo',
+        range: [5, 6, 7], // 5 quadrados = 7,5 metros
+        damage: ['2MF' ,'3MF'],
+        wallSize: [5, 6, 7, 8, 9],
+        learningComponents: 'Nenhum',
+        duration: '12 segundos, 2 turnos',
+        uses: 1,
+        toHit: '1d20',
+        castingTime: '1 ação',
+        description:'O dobrador, atira no chão diversas brasas interligadas, após isso ele aumenta o tamanho da mesma criando uma parede de fogo de no máximo 7,5 metros de distância com 2 metros de altura, ele poderá conjurar essa parede até 7,5 metros dele, caso precise, poderá se movimentar para completar o formato da parede. Caso alguém passe pela parede, ela causará dano nesta pessoa. Dominadores de água e de ar podem tentar apagar a parede com habilidades plausíveis ou ataques básicos. Esta habilidade dura dois turnos.',
+        xp: 700,
+        purchased: false,
+        upgrades: {
+            damage: [0, 300],
+            range: [0, 150, 150],
+            wallSize: [0, 150, 150, 150, 150],
+        },
+    };
+      
+    burningDodge = {
+        name: 'Desvio Ardente',
+        range: [5, 6, 7], // 5 quadrados = 7,5 metros
+        damage: ['1d4', '3d4', '6d4', '10d4'],
+        learningComponents: 'Pergaminho, aulas',
+        duration: 'Instantâneo',
+        uses: 2,
+        toHit: '1d20',
+        castingTime: '1 reação',
+        defender: '1d20 + MD + 3',
+        xp: 800,
+        purchased: false,
+        upgrades: {
+            damage: [0, 100, 150, 200],
+            range: [0, 150, 150],
+            defender: [0, 150, 300, 450],
+        },
+        description:'Entre as ações de seus inimigos, utilizando uma reação, o dobrador poderá desviar de ataques com uma rasteira e ao mesmo tempo causar 1d4 de dano, em um cone com alcance máximo de 7,5 metros, com 4,5 metros como base do cone.',
+    };
 }
