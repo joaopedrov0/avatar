@@ -25,12 +25,12 @@
                     <th>CAR</th>
                 </tr>
                 <tr>
-                    <td class="attribute strength" onblur="renderModifier('strength')" contenteditable="true"></td>
-                    <td class="attribute dexterity" onblur="renderModifier('dexterity')" contenteditable="true"></td>
-                    <td class="attribute constituition" onblur="renderModifier('constituition')" contenteditable="true"></td>
-                    <td class="attribute intelligence" onblur="renderModifier('intelligence')" contenteditable="true"></td>
-                    <td class="attribute wisdow" onblur="renderModifier('wisdow')" contenteditable="true"></td>
-                    <td class="attribute charisma" onblur="renderModifier('charisma')" contenteditable="true"></td>
+                    <td class="attribute strength"><input onkeyup="renderModifier('strength')" type="number" name="strength-attribute" id="strength-attribute"></td>
+                    <td class="attribute dexterity"><input onkeyup="renderModifier('dexterity')" type="number" name="dexterity-attribute" id="dexterity-attribute"></td>
+                    <td class="attribute constituition"><input onkeyup="renderModifier('constituition')" type="number" name="constituition-attribute" id="constituition-attribute"></td>
+                    <td class="attribute intelligence"><input onkeyup="renderModifier('intelligence')" type="number" name="intelligence-attribute" id="intelligence-attribute"></td>
+                    <td class="attribute wisdow"><input onkeyup="renderModifier('wisdow')" type="number" name="wisdow-attribute" id="wisdow-attribute"></td>
+                    <td class="attribute charisma"><input onkeyup="renderModifier('charisma')" type="number" name="charisma-attribute" id="charisma-attribute"></td>
                 </tr>
                 <tr>
                     <td class="modifier strength">+0</td>
@@ -41,7 +41,10 @@
                     <td class="modifier charisma">+0</td>
                 </tr>
             </table>
+            <div onclick="submitCharacter()" class="btn">Criar Personagem</div>
         </div>
         <script src="./javascript/createNew.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+        <script src="./javascript/supabase.js"></script>
     </body>
 </html>

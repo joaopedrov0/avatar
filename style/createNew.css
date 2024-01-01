@@ -13,3 +13,39 @@ input.name{
 h2{
     margin: 30px 0 10px 0;
 }
+
+input{
+    font-size: 24px;
+    text-align: center;
+    border: none;
+}
+
+td{
+    text-align: center;
+}
+
+.btn{
+    padding: 20px 50px;
+    background-color: #0494df;
+    color: black;
+    font-size: 24px;
+    border-radius: 4px;
+    margin-top: 60px;
+    transition: all ease 200ms;
+}
+
+.btn:hover{
+    background-color: #2ea1df;
+    color: white;
+    cursor: pointer;
+
+}
+
+
+
+/* para garantir que o texto vai ser realmente centralizado, ele tira as arrows da lateral do input */
+input[type='number']::-webkit-inner-spin-button, 
+input[type='number']::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    margin: 0;
+}
