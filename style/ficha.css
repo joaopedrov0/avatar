@@ -1,0 +1,193 @@
+.outside{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 4;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(0, 0, 0, 0.3);
+
+
+    display: none;
+}
+
+.outside.visible {
+    display: flex;
+}
+
+.modal{
+    width: clamp(300px, 90vw, 1260px);
+    height: 720px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    z-index: 5;
+
+    background-color: #fff;
+}
+.ficha{
+    display: flex;
+    flex-direction: column;
+
+    width: clamp(300px, 70vw, 720px);
+    /* background-color: red; */
+}
+
+.ficha-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    font-size: 24px;
+
+    border-bottom: 1px solid rgba(200, 200, 200, 0.3);
+}
+
+.life{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.life-buttons{
+    display: flex;
+    flex-direction: column;
+}
+
+.life-buttons span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 3px;
+    transition: all ease 200ms;
+    padding: 3px;
+    margin-left: 3px;
+}
+.life-buttons span:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.life > *, .xp, .nome {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.life, .xp, .nome{
+    margin: 5px 20px;
+    width: 30%;
+}
+
+.life-counter span{
+    margin-left: -5px;
+    margin-right: 5px;
+}
+
+.atributos{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.life-btn{
+    padding: 20px 30px;
+    background-color: #0494df;
+    color: black;
+    font-size: 24px;
+    border-radius: 4px;
+    text-align: center;
+    margin-left: 10px;
+
+    transition: all ease 200ms;
+}
+
+.life-btn:hover{
+    background-color: #2ea1df;
+    color: white;
+    cursor: pointer;
+
+}
+
+.skills{
+    height: 100%;
+
+    display: flex;
+    flex-direction: row;
+
+    background-color: red;
+    padding: 20px 0;
+}
+
+.owned, .available{
+    width: 50%;
+    height: 100%;
+}
+
+.owned{
+    background-color: blue;
+}
+
+.available{
+    background-color: orange;
+}
+
+
+span.material-symbols-outlined{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    user-select: none;
+}
+
+
+/* skill-card */
+
+.skill-card{
+    background-color: #fff;
+    margin: 5px;
+    padding: 0 15px 15px 15px;
+    border-radius: 10px;
+    height: 250px;
+    overflow-y: auto;
+
+    font-size: 14px;
+
+    transition: all ease 200ms;
+}
+
+.skill-card.reduced{
+    height: 50px;
+    
+    overflow-y: hidden;
+}
+
+.skill-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    margin-bottom: 20px;
+
+    border-bottom: 1px solid rgba(200, 200, 200, 0.3);
+}
+
+.skill-expand-btn{
+    padding: 2px;
+    border-radius: 3px;
+
+    transition: all ease 200ms;
+}
+
+.skill-expand-btn:hover{
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.3);
+}

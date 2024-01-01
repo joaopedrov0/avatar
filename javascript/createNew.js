@@ -18,6 +18,13 @@ function renderModifier(att){
 class Character {
     constructor(name, str, dex, con, int, wis, cha){
         this.name = name
+        // this.modStr = Math.floor((parseInt(str) - 10) / 2)
+        // this.modDex = Math.floor((parseInt(dex) - 10) / 2)
+        // this.modCon = Math.floor((parseInt(con) - 10) / 2)
+        // this.modInt = Math.floor((parseInt(int) - 10) / 2)
+        // this.modWis = Math.floor((parseInt(wis) - 10) / 2)
+        // this.modCha = Math.floor((parseInt(cha) - 10) / 2)
+        this.life = 20 + Math.floor((parseInt(con) - 10) / 2)
         this.str = parseInt(str)
         this.dex = parseInt(dex)
         this.con = parseInt(con)
@@ -76,6 +83,7 @@ async function submitCharacter(){
                 .select()
             break
     }
+    window.location.pathname = '/'
 }
 
 
