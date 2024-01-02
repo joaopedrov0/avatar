@@ -1,5 +1,8 @@
 let PersonagensList
 let skillTree
+let character
+
+
 async function requestPersonagens() {
     let { data: Personagens, error } = await supabaseClient
     .from('Personagens')
@@ -45,7 +48,7 @@ function toggleCard(skill){
 function openSheet(id){
     skillTree = ''
 
-    let character = JSON.parse(PersonagensList.find((personagem) => personagem.id === id).sheet)
+    character = JSON.parse(PersonagensList.find((personagem) => personagem.id === id).sheet)
 
     console.log(character)
 
@@ -102,8 +105,8 @@ function openSheet(id){
                                 <td class="modifier charisma">+${Math.floor((parseInt(character.cha) - 10) / 2)}</td>
                             </tr>
                         </table>
-                        <div class="life-btn avatar-airbender">
-                            Comprar vida<br>${(100 + character.lifePurchased*100)}xp
+                        <div class="life-btn avatar-airbender" onclick="purchaseLife()">
+                            Comprar vida<br>${(250)}xp
                         </div>
                     </div>
                     <div class="skills">
@@ -133,17 +136,21 @@ function renderSkills(character) {
     let owned = document.querySelector('.owned')
     let available = document.querySelector('.available')
 
+    owned.innerHTML = '<h2>Compradas</h2>'
+    available.innerHTML = '<h2>Disponíveis</h2>'
+
 
     for (skill in skillTree){
+        console.log(skill)
         if(character.skills[skill]){
-            owned.innerHTML += createSkillCard(character.skills[skill], skill, character)
+            owned.innerHTML += createSkillCard(character.skills[skill], skill, true)
         } else {
             available.innerHTML += createSkillCard(skillTree[skill], skill)
         }
     }
 }
 
-function createSkillCard(skill, key, character){
+function createSkillCard(skill, key, characterHave){
     let temp = ''
     temp += `
     <div class="skill-card reduced" id="${key}">
@@ -170,13 +177,13 @@ function createSkillCard(skill, key, character){
     if(skill.duration){
         temp += `<div class="skill-duration"><strong>Duração:</strong> ${skill.duration}</div>`
     }
-    if(skill.damage && character){
+    if(skill.damage && characterHave){
         temp += `<div class="skill-damage"><strong>Dano:</strong> ${skill.damage[skill.purchased.damage]} + ${Math.floor((parseInt(character.str) - 10) / 2)}</div>`
     } else if (skill.damage){
         temp += `<div class="skill-damage"><strong>Dano:</strong> ${skill.damage[skill.purchased.damage]} + MF</div>`
     }
 
-    if(skill.defender && character){
+    if(skill.defender && characterHave){
         temp += `<div class="skill-damage"><strong>Defesa:</strong> ${skill.defender[skill.purchased.defender]} + ${Math.floor((parseInt(character.dex) - 10) / 2)}</div>`
     } else if (skill.defender){
         temp += `<div class="skill-damage"><strong>Dano:</strong> ${skill.defender[skill.purchased.defender]} + MD</div>`
@@ -205,8 +212,8 @@ function createSkillCard(skill, key, character){
         if(skill.upgrades.difficultyClass){
             temp +=`<div class="skill-upgrades-difficultyClass"><strong>Classe de dificuldade:</strong> Nível ${skill.purchased.difficultyClass}</div>`
         }
-        if(!character){
-            temp +=`<div class="life-btn avatar-airbender" onclick="buySkill(${key})">
+        if(!characterHave){
+            temp +=`<div class="life-btn avatar-airbender" onclick="buySkill('${key}')">
                         Comprar<br>${skill.price}xp
                     </div>`
         }
@@ -231,6 +238,67 @@ function changeLifePoints(signal){
 }
 
 
-function buySkill(){
-    alert('Função pendente')
+function buySkill(key){
+    character.skills[key] = skillTree[key]
+    character.xp = parseInt(character.xp) + parseInt(skillTree[key].price)
+
+    console.log(key)
+
+    console.log(skillTree[key])
+
+    console.log(character)
+
+    let oldCard = document.querySelector(`#${key}`)
+    oldCard.parentNode.removeChild(oldCard)
+
+    renderSkills(character)
+
+    renderXP()
+}
+
+
+function renderXP(){
+    let characterXP = document.querySelector('.xp')
+    characterXP.innerText = `XP: ${character.xp}`
+}
+
+function renderLife(bonusLife){
+    let characterLife = document.querySelector('.life-number')
+    let lifeCounter = document.querySelector('.life-counter')
+
+    lifeCounter.innerHTML = `
+    x${character.lifePurchased}
+    <span class="material-symbols-outlined">
+        upgrade
+    </span>
+    `
+
+    console.log(lifeCounter)
+
+    let currentAndMax = characterLife.innerText.split('\n/')
+    currentAndMax[0] = parseInt(currentAndMax[0]) + bonusLife
+    currentAndMax[1] = parseInt(currentAndMax[1]) + bonusLife
+
+    characterLife.innerHTML = `<span contenteditable="true">${currentAndMax[0]}</span>/${currentAndMax[1]}`
+}
+
+function purchaseLife(){
+    let bonusLife = roll(1, 6) + 6 + Math.floor((character.con - 10) / 2)
+    character.life += bonusLife
+
+    character.lifePurchased++
+
+    character.xp = parseInt(character.xp) + 250
+
+
+    renderXP()
+    renderLife(bonusLife)
+}
+
+function roll(quantity, faces){
+    let temp = 0
+    for(let i = quantity; i > 0; i--){
+        temp += Math.floor(Math.random() * faces) + 1
+    }
+    return temp
 }
