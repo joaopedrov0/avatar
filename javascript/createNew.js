@@ -34,6 +34,7 @@ class Character {
         this.xp = 0
         this.skills = {}
         this.lifePurchased = 0
+        this.proficienty
     }
 }
 

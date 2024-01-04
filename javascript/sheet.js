@@ -169,6 +169,15 @@ function renderSkills(character) {
 
 function createSkillCard(skill, key, characterHave){
     let temp = ''
+    let dependency = false
+
+    if (skill.dependency && !characterHave) {
+        console.log(skill)
+        dependency = ''
+        skill.dependency.forEach((currentValue) => {
+            dependency += ` ${skillTree[currentValue].name}`
+        })
+    }
     temp += `
     <div class="skill-card reduced" id="${key}">
         <div class="skill-header">
@@ -211,6 +220,9 @@ function createSkillCard(skill, key, characterHave){
         temp +=`
             <div class="skill-description"><strong>Descrição:</strong> ${skill.description}</div>
         </div>
+        `
+    if(skill.upgrades){
+        temp += `
         <div class="skill-upgrades">
         <strong>Upgrades</strong>
         `
@@ -232,7 +244,12 @@ function createSkillCard(skill, key, characterHave){
         if(skill.upgrades.increment){
             temp +=`<div class="skill-upgrades-increment"><strong>Classe de dificuldade:</strong> Nível ${skill.purchased.difficultyClass}</div>`
         }
+    }
+        
         if(!characterHave){
+            if(skill.dependency){
+                temp += `<strong>Requisitos:${dependency}</strong>`
+            }
             temp +=`<div class="btn avatar-airbender" onclick="buySkill('${key}')">
                         Comprar<br>${skill.price}xp
                     </div>`

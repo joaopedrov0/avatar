@@ -22,6 +22,7 @@
 
 class FireSkillTree {
     basicAttack = {
+        dependency: [],
         name: 'Ataque Básico',
         range: [
             5,
@@ -51,6 +52,7 @@ class FireSkillTree {
         },
     }
     fireBall = {
+        dependency: ['basicAttack'],
         name: 'Bola de Fogo',
         range: [
             7,
@@ -78,6 +80,7 @@ class FireSkillTree {
         },
     }
     flamingKick = {
+        dependency: ['basicAttack'],
         name: 'Chute Flamejante',
         range: [
             3,
@@ -105,6 +108,7 @@ class FireSkillTree {
         },
     }
     canalization = {
+        dependency: ['p1'],
         name: 'Canalização',
         range: [
             8,
@@ -134,6 +138,7 @@ class FireSkillTree {
 
     //chat gpt part, revisar com atenção
     continuousFlame = {
+        dependency: ['IVH1'],
         name: 'Chama Contínua',
         range: [6, 7, 8], // 6 quadrados = 9 metros
         damage: ['4d4', '6d4', '6d6', '8d8', '8d10'],
@@ -153,6 +158,7 @@ class FireSkillTree {
     };
       
     fireWall = {
+        dependency: ['IVH2'],
         name: 'Parede de Fogo',
         range: [5, 6, 7], // 5 quadrados = 7,5 metros
         damage: ['1MF' ,'2MF'],
@@ -173,6 +179,7 @@ class FireSkillTree {
     };
       
     burningDodge = {
+        dependency: ['p2'],
         name: 'Desvio Ardente',
         range: [5, 6, 7], // 5 quadrados = 7,5 metros
         damage: ['1d4', '3d4', '6d4', '10d4'],
@@ -191,4 +198,130 @@ class FireSkillTree {
         },
         description:'Entre as ações de seus inimigos, utilizando uma reação, o dobrador poderá desviar de ataques com uma rasteira e ao mesmo tempo causar 1d4 de dano, em um cone com alcance máximo de 7,5 metros, com 4,5 metros como base do cone.',
     };
+
+    IVH1 = {
+        dependency: ['fireBall'],
+        name: 'Incremento no Valor de Habilidade 1',
+        price: 500,
+        description: 'Recebe 2 pontos de Incremento no Valor de Habilidade.',
+    }
+    
+    IVH2 = {
+        dependency: ['flamingKick'],
+        name: 'Incremento no Valor de Habilidade 2',
+        price: 500,
+        description: 'Recebe 2 pontos de Incremento no Valor de Habilidade.',
+    }
+    
+    // IVH3 = {
+    //     name: 'Incremento no Valor de Habilidade 3',
+    //     price: 1000,
+    //     description: 'Recebe 2 pontos de Incremento no Valor de Habilidade.',
+    // }
+    
+    // IVH4 = {
+    //     name: 'Incremento no Valor de Habilidade 4',
+    //     price: 1000,
+    //     description: 'Recebe 2 pontos de Incremento no Valor de Habilidade.',
+    // }
+    
+    // IVH5 = {
+    //     name: 'Incremento no Valor de Habilidade 5',
+    //     price: 1000,
+    //     description: 'Recebe 2 pontos de Incremento no Valor de Habilidade.',
+    // }
+    
+    // IVH6 = {
+    //     name: 'Incremento no Valor de Habilidade 6',
+    //     price: 1700,
+    //     description: 'Recebe 2 pontos de Incremento no Valor de Habilidade.',
+    // }
+    
+    // IVH7 = {
+    //     name: 'Incremento no Valor de Habilidade 7',
+    //     price: 1700,
+    //     description: 'Recebe 2 pontos de Incremento no Valor de Habilidade.',
+    // }
+    
+    // IVH8 = {
+    //     name: 'Incremento no Valor de Habilidade 8',
+    //     price: 2500,
+    //     description: 'Recebe 2 pontos de Incremento no Valor de Habilidade.',
+    // }
+    
+    // IVH9 = {
+    //     name: 'Incremento no Valor de Habilidade 9',
+    //     price: 2500,
+    //     description: 'Recebe 2 pontos de Incremento no Valor de Habilidade.',
+    // }
+    
+    // IVH10 = {
+    //     name: 'Incremento no Valor de Habilidade 10',
+    //     price: 2500,
+    //     description: 'Recebe 2 pontos de Incremento no Valor de Habilidade.',
+    // }
+    
+    // IVH11 = {
+    //     name: 'Incremento no Valor de Habilidade 11',
+    //     price: 3500,
+    //     description: 'Recebe 2 pontos de Incremento no Valor de Habilidade.',
+    // }
+    
+    // IVH12 = {
+    //     name: 'Incremento no Valor de Habilidade 12',
+    //     price: 3500,
+    //     description: 'Recebe 2 pontos de Incremento no Valor de Habilidade.',
+    // }
+
+    p1 = {
+        dependency: ['fireBall'],
+        name: 'Proficiência 1',
+        price: 400,
+        description: 'Recebe 1 ponto de proficiência.',
+    }
+
+    p2 = {
+        dependency: ['flamingKick'],
+        name: 'Proficiência 2',
+        price: 400,
+        description: 'Recebe 1 ponto de proficiência.',
+    }
+
+    // p3 = {
+    //     name: 'Proficiência 3',
+    //     price: 800,
+    //     description: 'Recebe 1 ponto de proficiência.',
+    // }
+    
+    // p4 = {
+    //     name: 'Proficiência 4',
+    //     price: 800,
+    //     description: 'Recebe 1 ponto de proficiência.',
+    // }
+    
+    // p5 = {
+    //     name: 'Proficiência 5',
+    //     price: 1500,
+    //     description: 'Recebe 1 ponto de proficiência.',
+    // }
+    
+    // p6 = {
+    //     name: 'Proficiência 6',
+    //     price: 1500,
+    //     description: 'Recebe 1 ponto de proficiência.',
+    // }
+    
+    // p7 = {
+    //     name: 'Proficiência 7',
+    //     price: 2300,
+    //     description: 'Recebe 1 ponto de proficiência.',
+    // }
+    
+    // p8 = {
+    //     name: 'Proficiência 8',
+    //     price: 4700,
+    //     description: 'Recebe 1 ponto de proficiência.',
+    // }
+    
+    
 }
