@@ -12,3 +12,4 @@ Uma aplicação web usando Supabase como back-end que cria e gerencia fichas de 
 - Compra de upgrades 
 - Compra de proficiência
 - Compra de incremento no valor de habilidade
+- Implementar mecânica de Skill Tree
