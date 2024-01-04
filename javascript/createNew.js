@@ -32,7 +32,7 @@ class Character {
         this.wis = parseInt(wis)
         this.cha = parseInt(cha)
         this.xp = 0
-        this.skills = []
+        this.skills = {}
         this.lifePurchased = 0
     }
 }

@@ -196,3 +196,24 @@ span.material-symbols-outlined{
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.3);
 }
+
+.skill-card .btn{
+    margin: 10px 0 0 0;
+    width: 100%;
+}
+
+.sheet-btn-area{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.sheet-btn-area > * {
+    width: 45%;
+    padding: 20px;
+
+    /* text-align: center;
+    align-items: center;
+    justify-content: center; */
+}

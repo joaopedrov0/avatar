@@ -48,9 +48,19 @@ function toggleCard(skill){
 function openSheet(id){
     skillTree = ''
 
+    console.log(PersonagensList.find((personagem) => personagem.id === id))
+
     character = JSON.parse(PersonagensList.find((personagem) => personagem.id === id).sheet)
 
+
+
     console.log(character)
+
+    // character.skills = JSON.parse(character.skills)
+
+    console.log(character)
+
+    character.id = id
 
     let outside = document.querySelector('.outside')
 
@@ -89,12 +99,12 @@ function openSheet(id){
                                 <th>CAR</th>
                             </tr>
                             <tr>
-                                <td class="attribute strength">${character.str}</td>
-                                <td class="attribute dexterity">${character.dex}</td>
-                                <td class="attribute constituition">${character.con}</td>
-                                <td class="attribute intelligence">${character.int}</td>
-                                <td class="attribute wisdow">${character.wis}</td>
-                                <td class="attribute charisma">${character.cha}</td>
+                                <td class="attribute strength" contenteditable="true" onkeyup="renderModifier('strength')">${character.str}</td>
+                                <td class="attribute dexterity" contenteditable="true" onkeyup="renderModifier('dexterity')">${character.dex}</td>
+                                <td class="attribute constituition" contenteditable="true" onkeyup="renderModifier('constituition')">${character.con}</td>
+                                <td class="attribute intelligence" contenteditable="true" onkeyup="renderModifier('intelligence')">${character.int}</td>
+                                <td class="attribute wisdow" contenteditable="true" onkeyup="renderModifier('wisdow')">${character.wis}</td>
+                                <td class="attribute charisma" contenteditable="true" onkeyup="renderModifier('charisma')">${character.cha}</td>
                             </tr>
                             <tr>
                                 <td class="modifier strength">+${Math.floor((parseInt(character.str) - 10) / 2)}</td>
@@ -105,8 +115,13 @@ function openSheet(id){
                                 <td class="modifier charisma">+${Math.floor((parseInt(character.cha) - 10) / 2)}</td>
                             </tr>
                         </table>
-                        <div class="life-btn avatar-airbender" onclick="purchaseLife()">
-                            Comprar vida<br>${(250)}xp
+                        <div class="sheet-btn-area">
+                            <div class="life-btn avatar-airbender" onclick="purchaseLife()">
+                                Comprar vida<br>${(250)}xp
+                            </div>
+                            <div class="sheet-save-changes btn avatar-airbender" onclick="saveChanges(${id})">
+                                Salvar personagem
+                            </div>
                         </div>
                     </div>
                     <div class="skills">
@@ -142,6 +157,8 @@ function renderSkills(character) {
 
     for (skill in skillTree){
         console.log(skill)
+
+        console.log(character.skills[`${skill}`])
         if(character.skills[skill]){
             owned.innerHTML += createSkillCard(character.skills[skill], skill, true)
         } else {
@@ -212,8 +229,11 @@ function createSkillCard(skill, key, characterHave){
         if(skill.upgrades.difficultyClass){
             temp +=`<div class="skill-upgrades-difficultyClass"><strong>Classe de dificuldade:</strong> Nível ${skill.purchased.difficultyClass}</div>`
         }
+        if(skill.upgrades.increment){
+            temp +=`<div class="skill-upgrades-increment"><strong>Classe de dificuldade:</strong> Nível ${skill.purchased.difficultyClass}</div>`
+        }
         if(!characterHave){
-            temp +=`<div class="life-btn avatar-airbender" onclick="buySkill('${key}')">
+            temp +=`<div class="btn avatar-airbender" onclick="buySkill('${key}')">
                         Comprar<br>${skill.price}xp
                     </div>`
         }
@@ -302,3 +322,64 @@ function roll(quantity, faces){
     }
     return temp
 }
+
+
+function renderModifier(att){
+    console.log(`blur ${att}`)
+    let attribute = document.querySelector(`td.attribute.${att}`)
+    let modifier = document.querySelector(`td.modifier.${att}`)
+    let modifierValue = Math.floor((parseInt(attribute.innerText) - 10) / 2)
+    if(modifierValue >= 0){
+        modifier.innerText = `+${modifierValue}`
+    } else if (modifierValue < 0){
+        modifier.innerText = `${modifierValue}`
+    } else {
+        modifier.innerText = `+0`
+    }
+
+    switch(att){
+        case 'strength':
+            character.str = parseInt(attribute.innerText)
+            break
+        case 'dexterity':
+            character.dex = parseInt(attribute.innerText)
+            break
+        case 'constituition':
+            character.con = parseInt(attribute.innerText)
+            break
+        case 'intelligence':
+            character.int = parseInt(attribute.innerText)
+            break
+        case 'wisdow':
+            character.wis = parseInt(attribute.innerText)
+            break
+        case 'charisma':
+            character.cha = parseInt(attribute.innerText)
+            break
+    }
+
+}
+
+
+async function saveChanges(id) {
+
+    let sheet = JSON.stringify(character)
+
+    console.log('sheet')
+    console.log(sheet)
+
+
+
+    const { data, error } = await supabaseClient
+        .from('Personagens')
+        .update({ xp: character.xp, sheet: sheet })
+        .eq('id', id)
+        .select()
+        .then(() => {
+            alert("Alterações salvas com sucesso!")
+        })
+
+}
+
+
+// alert('cara, o problema do JSON é porque vc ta mandando um array com propriedades, como se fosse um objeto mas não é, migra o modelo das habilidades pra objeto ou então cria outra lógica pra conseguir mostrar e gerenciar as habilidades compradas, pq propriedade de array não funciona')
