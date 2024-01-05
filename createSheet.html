@@ -8,12 +8,13 @@
         <!-- Stylesheet -->
         <link rel="stylesheet" href="./style/base.css">
         <link rel="stylesheet" href="./style/createNew.css">
+        <link rel="stylesheet" href="./style/mobile.css">
     </head>
     <body>
         <div class="wrap">
             <h1>Crie seu novo dobrador!</h1>
             <h2>Nome</h2>
-            <input class="name" type="text">
+            <input class="name" type="text" placeholder="Nome do personagem">
             <h2>Atributos</h2>
             <table>
                 <tr>
@@ -25,12 +26,12 @@
                     <th>CAR</th>
                 </tr>
                 <tr>
-                    <td class="attribute strength"><input onkeyup="renderModifier('strength')" type="number" name="strength-attribute" id="strength-attribute"></td>
-                    <td class="attribute dexterity"><input onkeyup="renderModifier('dexterity')" type="number" name="dexterity-attribute" id="dexterity-attribute"></td>
-                    <td class="attribute constituition"><input onkeyup="renderModifier('constituition')" type="number" name="constituition-attribute" id="constituition-attribute"></td>
-                    <td class="attribute intelligence"><input onkeyup="renderModifier('intelligence')" type="number" name="intelligence-attribute" id="intelligence-attribute"></td>
-                    <td class="attribute wisdow"><input onkeyup="renderModifier('wisdow')" type="number" name="wisdow-attribute" id="wisdow-attribute"></td>
-                    <td class="attribute charisma"><input onkeyup="renderModifier('charisma')" type="number" name="charisma-attribute" id="charisma-attribute"></td>
+                    <td class="attribute strength"><input onkeyup="renderModifier('strength')" type="number" name="strength-attribute" id="strength-attribute" placeholder="10"></td>
+                    <td class="attribute dexterity"><input onkeyup="renderModifier('dexterity')" type="number" name="dexterity-attribute" id="dexterity-attribute" placeholder="10"></td>
+                    <td class="attribute constituition"><input onkeyup="renderModifier('constituition')" type="number" name="constituition-attribute" id="constituition-attribute" placeholder="10"></td>
+                    <td class="attribute intelligence"><input onkeyup="renderModifier('intelligence')" type="number" name="intelligence-attribute" id="intelligence-attribute" placeholder="10"></td>
+                    <td class="attribute wisdow"><input onkeyup="renderModifier('wisdow')" type="number" name="wisdow-attribute" id="wisdow-attribute" placeholder="10"></td>
+                    <td class="attribute charisma"><input onkeyup="renderModifier('charisma')" type="number" name="charisma-attribute" id="charisma-attribute" placeholder="10"></td>
                 </tr>
                 <tr>
                     <td class="modifier strength">+0</td>
@@ -41,6 +42,7 @@
                     <td class="modifier charisma">+0</td>
                 </tr>
             </table>
+            <h5>Dica: Para criar o personagem, distribua os valores de atributo "14, 12, 10, 10, 10 e 8" como quiser, logo depois disso, você tem mais 4 pontos para distribuir como quiser, com a única exceção de que, inicialmente, nenhum deles podem ultrapassar 14.</h5>
             <div onclick="submitCharacter()" class="btn">Criar Personagem</div>
         </div>
         <script src="./javascript/createNew.js"></script>

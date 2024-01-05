@@ -1,0 +1,120 @@
+/* Mobile changes */
+
+@media screen and (max-width: 960px) {
+    h1{
+        text-align: center;
+    }
+    .wrap .menu{
+        display: flex;
+        flex-direction: column;
+        width: 90vw;
+    }
+    .wrap .menu > * {
+        width: 100%;
+        height: 40vw;
+    }
+    .wrap{
+        margin-top: 50px;
+    }
+
+    .menu .lista-fichas{
+        height: 50vh;;
+        padding: 5px;
+    }
+    
+
+    /* Criar nova ficha */
+
+    .modal{
+        width: 100vw;
+    }
+    table, tbody{
+        width: 95vw;
+        display: flex;
+        flex-wrap: wrap;
+        
+    }
+    th, td {
+        width: 30vw;
+        padding: 5px;
+    }
+    td input {
+        width: 100%;
+    }
+
+    input.name, td.attribute input{
+        font-size: 18px;
+    }
+
+
+
+    /* Ficha */
+    .modal{
+        width: 100vw;
+        height: 100vh;
+        padding: 0;
+        margin: 0;
+    }
+    .ficha{
+        width: 100vw;
+        align-items: center;
+        overflow-y: auto;
+    }
+    .ficha-header{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 30px;
+        padding-bottom: 10px;
+    }
+    .ficha-header > *{
+        width: 100%;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    div.atributos{
+        display: flex;
+        flex-direction: column;
+    }
+
+    div.atributos table td{
+        text-align: center;
+    }
+
+    div.atributos table{
+        margin-bottom: 10px;
+    }
+    div.sheet-btn-area{
+        padding: 10px;
+        width: 100vw;
+    }
+
+    div.sheet-btn-area > * {
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    div.ficha .skills{
+        width: 95vw;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    div.ficha .skills > *{
+        width: 100%;
+        height: auto;
+    }
+    h2{
+        font-size: 18px;
+    }
+    .skill-card{
+        font-size: 12px;
+        height: auto;
+    }
+
+
+ }

@@ -82,9 +82,9 @@ async function submitCharacter(){
                 .from('Personagens')
                 .insert([{name: newCharacter.name, xp: newCharacter.xp, sheet: JSON.stringify(newCharacter)}])
                 .select()
+                window.location.pathname = '/avatar'
             break
     }
-    window.location.pathname = '/'
 }
 
 
